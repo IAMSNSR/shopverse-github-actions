@@ -272,7 +272,7 @@ jobs:
           echo "--- Nodes ---"
           kubectl get nodes -o wide
           echo ""
-          echo "--- Pods ---"
+          echo "--- Pods ---" 
           kubectl get pods -n shopverse
           echo ""
           echo "--- StatefulSets ---"
