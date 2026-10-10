@@ -68,7 +68,25 @@ jobs:
         run: |
           trivy image --exit-code 1 --severity CRITICAL --ignore-unfixed --format table shopverse-frontend:scan
 
-      - name: Run Trivy scan on backend
+  # ──────────────────────────────────────────────
+  # Stage 3: Build, Tag & Push Images + Helm Chart
+  # ──────────────────────────────────────────────
+  build-and-push:
+    name: Build, Tag & Push
+    runs-on: ubuntu-latest
+    needs: security-scan
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      
+      
+    name: Run Trivy scan on backend
         run: |
           trivy image --exit-code 1 --severity CRITICAL --ignore-unfixed --format table shopverse-backend:scan
      
