@@ -115,7 +115,6 @@ jobs:
 
       - name: Push frontend image
         run: |
-          docker push ${{ env.ECR_REGISTRY }}/shopverse-frontend:${{ github.sha }}
           docker push ${{ env.ECR_REGISTRY }}/shopverse-frontend:latest
 
       - name: Push backend image
