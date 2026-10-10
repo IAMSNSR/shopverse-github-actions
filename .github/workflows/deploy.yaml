@@ -115,13 +115,13 @@ jobs:
 
       - name: Push frontend image
         run: |
-          docker push ${{ env.ECR_REGISTRY }}/shopverse-frontend:${{ github.sha }}
-          docker push ${{ env.ECR_REGISTRY }}/shopverse-frontend:latest
+          docker push shopverse-frontend/shopverse-frontend:${{ github.sha }}
+          docker push shopverse-frontend/shopverse-frontend:latest
 
       - name: Push backend image
         run: |
-          docker push ${{ env.ECR_REGISTRY }}/shopverse-backend:${{ github.sha }}
-          docker push ${{ env.ECR_REGISTRY }}/shopverse-backend:latest
+          docker push shopverse-backend/shopverse-backend:${{ github.sha }}
+          docker push shopverse-backend/shopverse-backend:latest
 
       - name: Update Helm values.yaml with new image tags
         run: |
