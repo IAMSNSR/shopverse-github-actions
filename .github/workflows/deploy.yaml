@@ -4,6 +4,14 @@ on:
   push:
     branches: [main]
 
+env:
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
+  EKS_CLUSTER_NAME: ${{ secrets.EKS_CLUSTER_NAME }}
+  HELM_CHART_NAME: shopverse
+  TF_STATE_BUCKET: ${{ secrets.TF_STATE_BUCKET }}
+
+
 
 
 jobs:
