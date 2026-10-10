@@ -105,9 +105,7 @@ jobs:
           done
       - name: Build and tag frontend image
         run: |
-          docker build -t ${{ env.ECR_REGISTRY }}/shopverse-frontend:${{ github.sha }} \
-                        -t ${{ env.ECR_REGISTRY }}/shopverse-frontend:latest \
-                        ./frontend
+          docker build -t ${{ env.ECR_REGISTRY }}/shopverse-frontend:${{ github.sha }} -t ${{ env.ECR_REGISTRY }}/shopverse-frontend:latest ./frontend
 
       - name: Build and tag backend image
         run: |
