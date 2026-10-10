@@ -95,7 +95,7 @@ jobs:
             aws ecr describe-repositories --repository-names $repo --region ${{ env.AWS_REGION }} 2>/dev/null || \
             aws ecr create-repository --repository-name $repo --region ${{ env.AWS_REGION }}
           done
-          - name: Build and tag frontend image
+      - name: Build and tag frontend image
         run: |
           docker build -t ${{ env.ECR_REGISTRY }}/shopverse-frontend:${{ github.sha }} \
                         -t ${{ env.ECR_REGISTRY }}/shopverse-frontend:latest \
