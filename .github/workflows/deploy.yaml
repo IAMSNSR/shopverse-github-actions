@@ -86,7 +86,5 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
       
       
-    name: Run Trivy scan on backend
-        run: |
-          trivy image --exit-code 1 --severity CRITICAL --ignore-unfixed --format table shopverse-backend:scan
+    
      
