@@ -75,7 +75,9 @@ jobs:
       - name: Run Trivy scan on frontend
         run: |
           trivy image --exit-code 1 --severity CRITICAL --ignore-unfixed --format table shopverse-frontend:scan
-
+      - name: Run Trivy scan on backend
+        run: |
+          trivy image --exit-code 1 --severity CRITICAL --ignore-unfixed --format table shopverse-backend:scan
   # ──────────────────────────────────────────────
   # Stage 3: Build, Tag & Push Images + Helm Chart
   # ──────────────────────────────────────────────
@@ -115,6 +117,7 @@ jobs:
 
       - name: Push frontend image
         run: |
+          docker push ${{ env.ECR_REGISTRY }}/shopverse-frontend:${{ github.sha }}
           docker push ${{ env.ECR_REGISTRY }}/shopverse-frontend:latest
 
       - name: Push backend image
